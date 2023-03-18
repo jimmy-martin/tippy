@@ -21,7 +21,7 @@ model User {
   created_at  DateTime @default(now())
   modified_at DateTime @updatedAt
 
-  shifts  Shift[]
+  shifts   Shift[]
   payments Payment[]
 }
 
@@ -61,7 +61,7 @@ model Payment {
 
 model Table {
   id          Int      @id @default(autoincrement())
-  name        String
+  name        String   @unique
   created_at  DateTime @default(now())
   modified_at DateTime @updatedAt
 
