@@ -26,10 +26,12 @@ model User {
 }
 
 model Shift {
-  id        Int     @id @default(autoincrement())
-  /// 0 = day, 2 = night
-  type      Int
-  is_closed Boolean @default(false)
+  id          Int      @id @default(autoincrement())
+  /// 0 = day, 1 = night
+  type        Boolean
+  is_closed   Boolean  @default(false)
+  created_at  DateTime @default(now())
+  modified_at DateTime @updatedAt
 
   users User[]
   tips  Tip[]
