@@ -7,7 +7,7 @@ Open Source API that allows restaurant owners to manage tips and redistribute th
 - Docker Desktop (you should be able to run `docker ps` in your terminal)
 - Nothing more than that!
 
-## Scripts
+## Scripts (to run on docker container terminal)
 
 ### `npm run start`
 
@@ -20,3 +20,11 @@ Formats the code with prettier.
 ### `npm run lint`
 
 Lints the code with eslint.
+
+### `npm run migrate`
+
+Runs the migrations.
+
+### `npm run fixtures`
+
+Runs the fixtures (fake data for development).
