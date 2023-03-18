@@ -31,6 +31,27 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.post('/:id/add/:user_id', async (req, res) => {
+  try {
+    const shift = await ShiftService.addUser(req.params.id, req.params.user_id);
+    return res.status(200).json(shift);
+  } catch (error) {
+    return internalServerError(res, error.message);
+  }
+});
+
+router.post('/:id/remove/:user_id', async (req, res) => {
+  try {
+    const shift = await ShiftService.removeUser(
+      req.params.id,
+      req.params.user_id
+    );
+    return res.status(200).json(shift);
+  } catch (error) {
+    return internalServerError(res, error.message);
+  }
+});
+
 router.put('/:id', async (req, res) => {
   try {
     const shift = await ShiftService.update(req.params.id, req.body);
