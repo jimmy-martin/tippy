@@ -14,6 +14,7 @@ model User {
   id          Int      @id @default(autoincrement())
   firstname   String
   lastname    String
+  balance      Float    @default(0)
   /// 0 = kitchen, 1 = service
   status      Boolean
   /// 0 = false (deleted), 1 = true

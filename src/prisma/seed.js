@@ -20,6 +20,19 @@ async function main() {
       firstname: faker.name.firstName('male'),
       lastname: faker.name.lastName(),
       status: faker.datatype.boolean(),
+      balance: faker.datatype.number({ min: 0, max: 100 }),
+    },
+    {
+      firstname: faker.name.firstName('male'),
+      lastname: faker.name.lastName(),
+      status: faker.datatype.boolean(),
+      balance: faker.datatype.number({ min: 0, max: 100 }),
+    },
+    {
+      firstname: faker.name.firstName('male'),
+      lastname: faker.name.lastName(),
+      status: faker.datatype.boolean(),
+      balance: faker.datatype.number({ min: 0, max: 100 }),
     },
     {
       firstname: faker.name.firstName('male'),
@@ -32,14 +45,10 @@ async function main() {
       status: faker.datatype.boolean(),
     },
     {
-      firstname: faker.name.firstName('male'),
+      firstname: faker.name.firstName('female'),
       lastname: faker.name.lastName(),
       status: faker.datatype.boolean(),
-    },
-    {
-      firstname: faker.name.firstName('male'),
-      lastname: faker.name.lastName(),
-      status: faker.datatype.boolean(),
+      balance: faker.datatype.number({ min: 0, max: 100 }),
     },
     {
       firstname: faker.name.firstName('female'),
@@ -60,11 +69,7 @@ async function main() {
       firstname: faker.name.firstName('female'),
       lastname: faker.name.lastName(),
       status: faker.datatype.boolean(),
-    },
-    {
-      firstname: faker.name.firstName('female'),
-      lastname: faker.name.lastName(),
-      status: faker.datatype.boolean(),
+      balance: faker.datatype.number({ min: 0, max: 100 }),
     },
   ];
 
