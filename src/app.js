@@ -13,7 +13,7 @@ const main = async () => {
   app.use('/tables', require('./controllers/TableController'));
   app.use('/shifts', require('./controllers/ShiftController'));
 
-  app.use('/*', (req, res) => notFoundError(res, 'Not found'));
+  app.use('/*', (req, res) => notFoundError(res, 'Route Not found'));
 
   app.listen(3000, () => {
     console.log('Server is running on port http://localhost:3000');
