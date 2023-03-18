@@ -15,4 +15,10 @@ module.exports = {
   update: async (id, data) => await Shift.update(id, data),
 
   delete: async (id) => await Shift.delete(id),
+
+  findTips: async (id) => await Shift.findTips(id),
+
+  findUsers: async (id) => await Shift.findUsers(id),
+
+  getTotalTipsAmount: async (id) => await Shift.getTotalTipsAmount(id),
 };

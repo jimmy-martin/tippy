@@ -13,10 +13,30 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/:id/tips', async (req, res) => {
+  try {
+    const tips = await ShiftService.findTips(req.params.id);
+    const totalTips = await ShiftService.getTotalTipsAmount(req.params.id);
+    return res.status(200).json({ tips, totalTips: totalTips._sum.amount });
+  } catch (error) {
+    return internalServerError(res, error.message);
+  }
+});
+
+router.get('/:id/users', async (req, res) => {
+  try {
+    const users = await ShiftService.findUsers(req.params.id);
+    return res.status(200).json(users);
+  } catch (error) {
+    return internalServerError(res, error.message);
+  }
+});
+
 router.get('/:id', async (req, res) => {
   try {
     const shift = await ShiftService.find(req.params.id);
-    return res.status(200).json(shift);
+    const totalTips = await ShiftService.getTotalTipsAmount(req.params.id);
+    return res.status(200).json({ ...shift, totalTips: totalTips._sum.amount });
   } catch (error) {
     return internalServerError(res, error.message);
   }

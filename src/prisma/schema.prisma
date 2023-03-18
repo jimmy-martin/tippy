@@ -48,8 +48,6 @@ model Tip {
   table    Table @relation(fields: [id_table], references: [id])
   id_shift Int
   shift    Shift @relation(fields: [id_shift], references: [id])
-
-  @@unique([id_table, id_shift])
 }
 
 model Payment {

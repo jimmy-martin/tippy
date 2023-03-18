@@ -12,6 +12,7 @@ const main = async () => {
   app.use('/admins', require('./controllers/AdminController'));
   app.use('/tables', require('./controllers/TableController'));
   app.use('/shifts', require('./controllers/ShiftController'));
+  app.use('/tips', require('./controllers/TipController'));
 
   app.use('/*', (req, res) => notFoundError(res, 'Route Not found'));
 

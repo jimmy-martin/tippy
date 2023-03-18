@@ -7,8 +7,11 @@ module.exports = {
     return prisma.shift.findUniqueOrThrow({
       where: { id: Number(id) },
       include: {
-        _count: { select: { users: true } },
+        _count: { select: { users: true, tips: true } },
         users: true,
+        tips: {
+          orderBy: { created_at: 'desc' },
+        },
       },
     });
   },
@@ -62,4 +65,24 @@ module.exports = {
   },
 
   delete: (id) => prisma.shift.delete({ where: { id: Number(id) } }),
+
+  findTips: (id) => {
+    return prisma.tip.findMany({
+      where: { id_shift: Number(id) },
+      orderBy: { created_at: 'desc' },
+    });
+  },
+
+  findUsers: (id) => {
+    return prisma.user.findMany({
+      where: { shifts: { some: { id: Number(id) } } },
+    });
+  },
+
+  getTotalTipsAmount: (id) => {
+    return prisma.tip.aggregate({
+      where: { id_shift: Number(id) },
+      _sum: { amount: true },
+    });
+  },
 };
