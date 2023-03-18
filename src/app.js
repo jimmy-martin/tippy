@@ -11,6 +11,7 @@ const main = async () => {
   app.use('/users', require('./controllers/UserController'));
   app.use('/admins', require('./controllers/AdminController'));
   app.use('/tables', require('./controllers/TableController'));
+  app.use('/shifts', require('./controllers/ShiftController'));
 
   app.use('/*', (req, res) => notFoundError(res, 'Not found'));
 
