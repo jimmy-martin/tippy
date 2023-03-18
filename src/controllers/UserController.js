@@ -3,6 +3,7 @@ const router = express.Router();
 const { internalServerError } = require('../utils/error');
 
 const UserService = require('../services/UserService');
+const PaymentService = require('../services/PaymentService');
 
 router.get('/', async (req, res) => {
   try {
@@ -52,6 +53,15 @@ router.post('/', async (req, res) => {
 router.post('/inactive/:id', async (req, res) => {
   try {
     const user = await UserService.setInactive(req.params.id);
+    return res.status(200).json(user);
+  } catch (error) {
+    return internalServerError(res, error.message);
+  }
+});
+
+router.post('/:id/pay', async (req, res) => {
+  try {
+    const user = await PaymentService.payUser(req.params.id, req.body.amount);
     return res.status(200).json(user);
   } catch (error) {
     return internalServerError(res, error.message);

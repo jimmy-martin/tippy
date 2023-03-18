@@ -3,6 +3,7 @@ const router = express.Router();
 const { internalServerError } = require('../utils/error');
 
 const ShiftService = require('../services/ShiftService');
+const PaymentService = require('../services/PaymentService');
 
 router.get('/', async (req, res) => {
   try {
@@ -66,6 +67,25 @@ router.post('/:id/remove/:user_id', async (req, res) => {
       req.params.id,
       req.params.user_id
     );
+    return res.status(200).json(shift);
+  } catch (error) {
+    return internalServerError(res, error.message);
+  }
+});
+
+router.post('/:id/pay', async (req, res) => {
+  try {
+    const payment = await PaymentService.payShift(req.params.id);
+    await ShiftService.close(req.params.id);
+    return res.status(200).json(payment);
+  } catch (error) {
+    return internalServerError(res, error.message);
+  }
+});
+
+router.post('/:id/close', async (req, res) => {
+  try {
+    const shift = await ShiftService.close(req.params.id);
     return res.status(200).json(shift);
   } catch (error) {
     return internalServerError(res, error.message);

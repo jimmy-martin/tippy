@@ -21,4 +21,6 @@ module.exports = {
   findUsers: async (id) => await Shift.findUsers(id),
 
   getTotalTipsAmount: async (id) => await Shift.getTotalTipsAmount(id),
+
+  close: async (id) => await Shift.close(id),
 };

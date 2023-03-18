@@ -85,4 +85,11 @@ module.exports = {
       _sum: { amount: true },
     });
   },
+
+  close: (id) => {
+    return prisma.shift.update({
+      where: { id: Number(id) },
+      data: { is_closed: true },
+    });
+  },
 };

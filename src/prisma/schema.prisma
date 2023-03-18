@@ -14,7 +14,7 @@ model User {
   id          Int      @id @default(autoincrement())
   firstname   String
   lastname    String
-  balance      Float    @default(0)
+  balance     Float    @default(0)
   /// 0 = kitchen, 1 = service
   status      Boolean
   /// 0 = false (deleted), 1 = true
@@ -40,7 +40,7 @@ model Shift {
 
 model Tip {
   id          Int      @id @default(autoincrement())
-  amount      Int
+  amount      Float
   created_at  DateTime @default(now())
   modified_at DateTime @updatedAt
 
@@ -52,7 +52,7 @@ model Tip {
 
 model Payment {
   id          Int      @id @default(autoincrement())
-  amount      Int
+  amount      Float
   created_at  DateTime @default(now())
   modified_at DateTime @updatedAt
 
