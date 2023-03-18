@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int      @id @default(autoincrement())
+  firstname   String
+  lastname    String
+  /// 0 = kitchen, 1 = service
+  status      Boolean
+  /// 0 = false (deleted), 1 = true
+  active      Boolean  @default(true)
+  created_at  DateTime @default(now())
+  modified_at DateTime @updatedAt
+
+  shifts  Shift[]
+  payments Payment[]
+}
+
+model Shift {
+  id        Int     @id @default(autoincrement())
+  /// 0 = day, 2 = night
+  type      Int
+  is_closed Boolean @default(false)
+
+  users User[]
+  tips  Tip[]
+}
+
+model Tip {
+  id          Int      @id @default(autoincrement())
+  amount      Int
+  created_at  DateTime @default(now())
+  modified_at DateTime @updatedAt
+
+  id_table Int
+  table    Table @relation(fields: [id_table], references: [id])
+  id_shift Int
+  shift    Shift @relation(fields: [id_shift], references: [id])
+
+  @@unique([id_table, id_shift])
+}
+
+model Payment {
+  id          Int      @id @default(autoincrement())
+  amount      Int
+  created_at  DateTime @default(now())
+  modified_at DateTime @updatedAt
+
+  id_user Int
+  user    User @relation(fields: [id_user], references: [id])
+}
+
+model Table {
+  id          Int      @id @default(autoincrement())
+  name        String
+  created_at  DateTime @default(now())
+  modified_at DateTime @updatedAt
+
+  tips Tip[]
+}
+
+model Admin {
+  id          Int      @id @default(autoincrement())
+  pincode     String
+  created_at  DateTime @default(now())
+  modified_at DateTime @updatedAt
+}
