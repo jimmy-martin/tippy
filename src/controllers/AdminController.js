@@ -22,27 +22,9 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
-  try {
-    const admin = await AdminService.create(req.body);
-    return res.status(201).json(admin);
-  } catch (error) {
-    return internalServerError(res, error.message);
-  }
-});
-
 router.put('/:id', async (req, res) => {
   try {
     const admin = await AdminService.update(req.params.id, req.body);
-    return res.status(200).json(admin);
-  } catch (error) {
-    return internalServerError(res, error.message);
-  }
-});
-
-router.delete('/:id', async (req, res) => {
-  try {
-    const admin = await AdminService.delete(req.params.id);
     return res.status(200).json(admin);
   } catch (error) {
     return internalServerError(res, error.message);

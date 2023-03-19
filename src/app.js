@@ -13,6 +13,7 @@ const main = async () => {
   app.use('/tables', require('./controllers/TableController'));
   app.use('/shifts', require('./controllers/ShiftController'));
   app.use('/tips', require('./controllers/TipController'));
+  app.use('/auth', require('./controllers/AuthController'));
 
   app.use('/*', (req, res) => notFoundError(res, 'Route Not found'));
 
