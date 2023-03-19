@@ -2,7 +2,7 @@
 
 Open Source API that allows restaurant owners to manage tips and redistribute them fairly.
 
-> NOTE pour le/les correcteur du projet MyDigitalSchool à lire dans le fichier [docs.txt](https://github.com/jimmy-martin/tippy/blob/main/docs.txt)
+> NOTE : pour le/les correcteur du projet MyDigitalSchool des précisions sont apportés dans le fichier [mds.txt](https://github.com/jimmy-martin/tippy/blob/main/docs/mds.txt) mais aussi dans le fichier [design.md](https://github.com/jimmy-martin/tippy/blob/main/docs/design.md)
 
 ## Prerequisites
 
