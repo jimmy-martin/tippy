@@ -14,6 +14,19 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/stats', async (req, res) => {
+  try {
+    const stats = await ShiftService.getPeriodStats(
+      req.query.start,
+      req.query.end
+    );
+    return res.status(200).json(stats);
+  } catch (error) {
+    console.log(error);
+    return internalServerError(res, error.message);
+  }
+});
+
 router.get('/:id/tips', async (req, res) => {
   try {
     const tips = await ShiftService.findTips(req.params.id);
