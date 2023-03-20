@@ -23,4 +23,6 @@ module.exports = {
   getTotalTipsAmount: async (id) => await Shift.getTotalTipsAmount(id),
 
   close: async (id) => await Shift.close(id),
+
+  getPeriodStats: async (start, end) => await Shift.getPeriodStats(start, end),
 };

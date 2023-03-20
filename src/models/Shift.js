@@ -92,4 +92,58 @@ module.exports = {
       data: { is_closed: true },
     });
   },
+
+  getPeriodStats: async (start, end) => {
+    const shifts = await prisma.shift.findMany({
+      where: {
+        created_at: {
+          gte: new Date(start),
+          lte: new Date(end),
+        },
+      },
+      include: {
+        tips: true,
+      },
+    });
+
+    const totalTipsAmount = shifts.reduce((acc, shift) => {
+      return acc + shift.tips.reduce((acc, tip) => acc + tip.amount, 0);
+    }, 0);
+
+    const totalTipsCount = shifts.reduce((acc, shift) => {
+      return acc + shift.tips.length;
+    }, 0);
+
+    const totalShiftsCount = shifts.length;
+
+    const propetyNames = {
+      id: true,
+      amount: true,
+      created_at: true,
+      modified_at: true,
+      id_table: true,
+      id_shift: true,
+    };
+
+    const stats = await prisma.tip.aggregate({
+      where: {
+        created_at: {
+          gte: new Date(start),
+          lte: new Date(end),
+        },
+      },
+      _max: propetyNames,
+      _min: propetyNames,
+      _avg: { amount: true },
+    });
+
+    return {
+      totalTipsAmount,
+      totalTipsCount,
+      totalShiftsCount,
+      highestTip: stats._max,
+      lowestTip: stats._min,
+      averageTip: stats._avg,
+    };
+  },
 };
