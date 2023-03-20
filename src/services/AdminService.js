@@ -5,9 +5,5 @@ module.exports = {
 
   find: async (id) => await Admin.findOne(id),
 
-  create: async (data) => await Admin.create(data),
-
   update: async (id, data) => await Admin.update(id, data),
-
-  delete: async (id) => await Admin.delete(id),
 };

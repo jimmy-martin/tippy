@@ -9,4 +9,7 @@ module.exports = {
   internalServerError: (res, message) => {
     defaultError(res, 500, message);
   },
+  unauthorizedError: (res, message) => {
+    defaultError(res, 401, message);
+  },
 };

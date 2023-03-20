@@ -1,6 +1,8 @@
 # TIPPY
 
-Open Source API that allows restaurant owners to manage tips and redistribute them fairly
+Open Source API that allows restaurant owners to manage tips and redistribute them fairly.
+
+> NOTE pour le/les correcteur du projet MyDigitalSchool à lire dans le fichier [docs.txt](https://github.com/jimmy-martin/tippy/blob/main/docs.txt)
 
 ## Prerequisites
 
