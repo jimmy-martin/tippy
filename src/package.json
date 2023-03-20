@@ -1,0 +1,41 @@
+{
+  "name": "tippy",
+  "version": "1.0.0",
+  "description": "Open Source API that allows restaurant owners to manage tips and redistribute them fairly",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "format": "prettier --write \"./**/*.js\"",
+    "lint": "eslint \"./**/*.js\" --fix",
+    "migrate": "prisma migrate dev",
+    "fixtures": "prisma db seed --reset",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimmy-martin/tippy.git"
+  },
+  "author": "Jimmy MARTIN",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jimmy-martin/tippy/issues"
+  },
+  "homepage": "https://github.com/jimmy-martin/tippy#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
+    "nodemon": "^2.0.21",
+    "prettier": "2.8.4",
+    "prisma": "^4.11.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.11.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  }
+}

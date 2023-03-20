@@ -1,0 +1,9 @@
+Étant donné le flou concernant la façon dont sera testée l'API,
+je n'ai volontairement pas mis en place la route '/auth/signup' pour créer un compte admin,
+ni la route '/admins/delete/:id_admin' pour supprimer un compte admin.
+car si les fixtures sont lancées, il y a déjà un admin, et les visuels de l'application sur Figma
+ne démontrent pas la possibilité de créer ou supprimer un compte admin.
+
+Pour les routes à protéger, j'ai protégé celles qui me parraisaient les plus sensibles,
+et j'en ai peut-être oublié étant donné que je ne sais pas quelles tâches ne seront faites que par les admins.
+Par exemple: je ne sais pas si un utilisateur lambda peut créer un pourboire.
