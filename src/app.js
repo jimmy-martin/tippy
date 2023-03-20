@@ -14,7 +14,7 @@ const main = async () => {
   app.use('/users', authMiddleware, require('./controllers/UserController'));
   app.use('/admins', authMiddleware, require('./controllers/AdminController'));
   app.use('/tables', require('./controllers/TableController'));
-  app.use('/shifts', require('./controllers/ShiftController'));
+  app.use('/shifts', authMiddleware, require('./controllers/ShiftController'));
   app.use('/tips', require('./controllers/TipController'));
   app.use('/auth', require('./controllers/AuthController'));
 
