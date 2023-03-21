@@ -4,6 +4,12 @@ const authMiddleware = require('./middlewares/authMiddleware');
 const { notFoundError } = require('./utils/error');
 const cors = require('cors');
 
+const {
+  swaggerOptions,
+  swaggerUi,
+  swaggerDocument,
+} = require('./config/swaggerConfig');
+
 const app = express();
 
 const main = async () => {
@@ -17,6 +23,12 @@ const main = async () => {
   app.use('/shifts', require('./controllers/ShiftController'));
   app.use('/tips', require('./controllers/TipController'));
   app.use('/auth', require('./controllers/AuthController'));
+
+  app.use(
+    '/api/docs',
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerDocument, swaggerOptions)
+  );
 
   app.use('/*', (req, res) => notFoundError(res, 'Route Not found'));
 

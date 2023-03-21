@@ -32,3 +32,7 @@ Runs the migrations.
 ### `npm run fixtures`
 
 Runs the fixtures (fake data for development).
+
+### `npm run swagger`
+
+Generates/updates the swagger documentation.

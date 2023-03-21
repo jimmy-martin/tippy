@@ -9,6 +9,7 @@
     "lint": "eslint \"./**/*.js\" --fix",
     "migrate": "prisma migrate dev",
     "fixtures": "prisma db seed --reset",
+    "swagger": "node_modules/.bin/swagger-jsdoc -d swagger.yml -o swagger.yml controllers/**/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -33,7 +34,10 @@
     "@prisma/client": "^4.11.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0"
+    "jsonwebtoken": "^9.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.2",
+    "yaml": "^2.2.1"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
